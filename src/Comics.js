@@ -6,7 +6,10 @@ import { requestApiData } from "./actions";
 
 class Comics extends React.PureComponent {
   componentDidMount() {
-    this.props.requestApiData();
+    const { requestApiData, comics } = this.props;
+    if(!comics.length) {
+      requestApiData();
+    }
   }
   render() {
     const { comics, isFetching, requestApiData } = this.props;
